@@ -102,6 +102,7 @@ namespace BTCPayServer.Services.Rates
             Providers.Add("bittrex", new ExchangeSharpRateProvider("bittrex", new ExchangeBittrexAPI(), true));
             Providers.Add("poloniex", new ExchangeSharpRateProvider("poloniex", new ExchangePoloniexAPI(), true));
             Providers.Add("hitbtc", new ExchangeSharpRateProvider("hitbtc", new ExchangeHitbtcAPI(), false));
+            Providers.Add("coingecko", new ExchangeSharpRateProvider("coingecko", new ExchangeCoingeckoAPI(), false));
 
             // Cryptopia is often not available
             Providers.Add("cryptopia", new ExchangeSharpRateProvider("cryptopia", new ExchangeCryptopiaAPI(), false));
@@ -110,8 +111,7 @@ namespace BTCPayServer.Services.Rates
             Providers.Add(QuadrigacxRateProvider.QuadrigacxName, new QuadrigacxRateProvider());
             Providers.Add(CoinAverageRateProvider.CoinAverageName, new CoinAverageRateProvider() { Exchange = CoinAverageRateProvider.CoinAverageName, HttpClient = _httpClientFactory?.CreateClient(), Authenticator = _CoinAverageSettings });
             Providers.Add("kraken", new KrakenExchangeRateProvider() { HttpClient = _httpClientFactory?.CreateClient() });
-
-            // Those exchanges make multiple requests when calling GetTickers so we remove them
+                    // Those exchanges make multiple requests when calling GetTickers so we remove them
             //DirectProviders.Add("gdax", new ExchangeSharpRateProvider("gdax", new ExchangeGdaxAPI()));
             //DirectProviders.Add("gemini", new ExchangeSharpRateProvider("gemini", new ExchangeGeminiAPI()));
             //DirectProviders.Add("bitfinex", new ExchangeSharpRateProvider("bitfinex", new ExchangeBitfinexAPI()));
